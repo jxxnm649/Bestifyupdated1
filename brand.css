@@ -1,0 +1,214 @@
+/* ============================================================
+   Bestify — Brand Layer
+
+   ONE source of truth for how the whole storefront looks.
+
+   Loaded LAST on every page (right before </head>), so it wins
+   over the per-page <style> blocks that had each drifted into
+   their own colours and fonts. Nothing here changes layout or
+   behaviour — only the palette, type, and the shared component
+   look (cards, buttons, inputs, badges).
+
+   To restyle the whole site, change the tokens below. Don't add
+   page-specific colours here; keep those in the page's own file.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Core palette — matches theme.css, restated so pages that never
+     loaded theme.css still get the real brand colours. */
+  --bf-ink:        #14213D;
+  --bf-ink-soft:   #3A4A6B;
+  --bf-paper:      #FBF7F0;
+  --bf-paper-dim:  #F2ECE0;
+  --bf-card:       #FFFFFF;
+  --bf-line:       #E4DED2;
+
+  --bf-brand:      #F2A93B;
+  --bf-brand-deep: #D98925;
+  --bf-leaf:       #2F7A4F;
+  --bf-leaf-bg:    #E7F3EC;
+  --bf-rust:       #C1442D;
+  --bf-rust-bg:    #FBEAE6;
+
+  --bf-font-display: 'Space Grotesk', sans-serif;
+  --bf-font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --bf-radius:    14px;
+  --bf-radius-sm: 8px;
+  --bf-shadow:    0 8px 24px rgba(20, 33, 61, .08);
+  --bf-shadow-sm: 0 2px 8px rgba(20, 33, 61, .06);
+}
+
+
+/* ---------- Page foundation ----------
+   Every page had its own body background and font. Unified here.
+   !important is needed because several pages set these inside their
+   own <style> block on the same `body` selector. */
+
+body {
+  background: var(--bf-paper) !important;
+  color: var(--bf-ink) !important;
+  font-family: var(--bf-font-body) !important;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--bf-font-display) !important;
+  color: var(--bf-ink);
+  letter-spacing: -0.01em;
+}
+
+
+/* ---------- Cards ----------
+   Pages used white cards with 5 different border/radius/shadow
+   combinations. One look now. */
+
+.card,
+.bf-card,
+.connect-card,
+.info-card,
+.product-card,
+.order-card,
+.summary-card,
+.products-card,
+.customer-card,
+.wl-card,
+.reward-card {
+  background: var(--bf-card);
+  border: 1px solid var(--bf-line);
+  border-radius: var(--bf-radius);
+  box-shadow: var(--bf-shadow-sm);
+}
+
+
+/* ---------- Primary actions ----------
+   Buttons were green on one page, purple on another, blue on a
+   third. All primary actions are brand marigold now. */
+
+.buy-btn,
+.continue-btn,
+.checkout-btn,
+.place-order-btn,
+.bf-btn-primary,
+.wl-btn-buy,
+.btn-directions,
+.save-modal-btn,
+.hop-save-btn,
+button[type="submit"]:not(.bf-btn-ghost):not(.bf-btn-danger) {
+  background: var(--bf-brand) !important;
+  color: var(--bf-ink) !important;
+  border: none;
+  border-radius: var(--bf-radius-sm);
+  font-family: var(--bf-font-body);
+  font-weight: 700;
+}
+
+.buy-btn:hover,
+.continue-btn:hover,
+.checkout-btn:hover,
+.place-order-btn:hover,
+.bf-btn-primary:hover,
+button[type="submit"]:not(.bf-btn-ghost):not(.bf-btn-danger):hover {
+  background: var(--bf-brand-deep) !important;
+}
+
+/* Secondary / "add to cart" style actions stay green but one green */
+.add-cart-btn,
+.wl-btn-move,
+.btn-move,
+.btn-call {
+  background: var(--bf-leaf) !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: var(--bf-radius-sm);
+  font-weight: 700;
+}
+
+
+/* ---------- Form controls ----------
+   Inputs had 4 different border colours and radii. */
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+select,
+textarea {
+  font-family: var(--bf-font-body);
+  border: 1px solid var(--bf-line);
+  border-radius: var(--bf-radius-sm);
+  background: var(--bf-card);
+  color: var(--bf-ink);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--bf-brand-deep);
+}
+
+
+/* ---------- Prices ----------
+   Selling price was 3 different greens; MRP strike 3 different greys. */
+
+.price,
+.selling-price,
+.current-price,
+.grand-price,
+.hop-selling-price,
+.price-block .price {
+  color: var(--bf-leaf) !important;
+  font-weight: 800;
+}
+
+.mrp-strike,
+.old-price {
+  color: var(--bf-ink-soft) !important;
+  opacity: .6;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+
+/* ---------- Status badges ----------
+   Shared success / warning / danger tones so a "Delivered" pill
+   looks the same wherever it appears. */
+
+.badge-paid,
+.status-delivered,
+.hop-st-delivered,
+.verified,
+.badge-placed {
+  background: var(--bf-leaf-bg) !important;
+  color: var(--bf-leaf) !important;
+}
+
+.badge-cod,
+.status-pending,
+.hop-st-pending {
+  background: #FBF1DD !important;
+  color: var(--bf-brand-deep) !important;
+}
+
+.status-cancelled,
+.hop-st-cancelled {
+  background: var(--bf-rust-bg) !important;
+  color: var(--bf-rust) !important;
+}
+
+
+/* ---------- Section headings ---------- */
+
+.section-title,
+.connect-title,
+.products-title {
+  font-family: var(--bf-font-display);
+  color: var(--bf-ink);
+}
+
+
+/* ---------- Links ---------- */
+
+a { color: inherit; }
+a:hover { color: var(--bf-brand-deep); }
