@@ -20,10 +20,10 @@
      loaded theme.css still get the real brand colours. */
   --bf-ink:        #14213D;
   --bf-ink-soft:   #3A4A6B;
-  --bf-paper:      #FBF7F0;
-  --bf-paper-dim:  #F2ECE0;
+  --bf-paper:      #FFFFFF;
+  --bf-paper-dim:  #F7F7F9;
   --bf-card:       #FFFFFF;
-  --bf-line:       #E4DED2;
+  --bf-line:       #E8E8ED;
 
   --bf-brand:      #F2A93B;
   --bf-brand-deep: #D98925;
@@ -212,3 +212,46 @@ textarea:focus {
 
 a { color: inherit; }
 a:hover { color: var(--bf-brand-deep); }
+
+
+/* ---------- Clean white surfaces ----------
+   Several pages (orders, cart, checkout, product) used their own
+   off-greys — #f0f2f5, #f4f5f8, #eeeeee, #f8fafc — which read as
+   dull patches now that the site is white. These are the shared
+   "panel / strip / tile" surfaces; all one soft tint or pure white. */
+
+.orders-page-wrap,
+.orders-toolbar,
+.filter-bar,
+.search-bar,
+.sticky-header,
+.page-header,
+.cart-wrap,
+.checkout-wrap,
+.summary-wrap {
+  background: var(--bf-card) !important;
+}
+
+.order-card-item,
+.full-details-panel,
+.cart-item,
+.summary-box,
+.product-thumb {
+  background: var(--bf-card) !important;
+}
+
+/* Soft neutral fills (chips, empty thumbs, progress tracks) */
+.filter-chip,
+.chip,
+.tab-pill,
+.otrack-line,
+.image-placeholder {
+  background: var(--bf-paper-dim) !important;
+}
+
+/* Full-page shells that set their own body-level tint */
+.container,
+.app-container,
+.page-wrap {
+  background: transparent !important;
+}
